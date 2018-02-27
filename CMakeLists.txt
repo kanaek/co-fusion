@@ -9,7 +9,9 @@ add_compile_options(-std=c++14 -Wall -Wno-unused-function -Wno-unused-variable
 cmake_policy(SET CMP0009 NEW)
 
 project(CoFusion)
-
+set(BOOST_ROOT "/home/kanrun/octree_test/boost")
+set(BOOST_INCLUDE_DIRS "${BOOST_ROOT}/include")
+set(BOOST_LIBRARY_DIRS "${BOOST_ROOT}/lib")
 set(CUDA_HOST_COMPILER "/usr/bin/g++-4.9")
 set(BUILD_TESTS OFF CACHE BOOL "Build unit tests")
 
@@ -21,7 +23,7 @@ if (OPENMP_FOUND)
 endif()
 
 # boost
-find_package(Boost 1.58.0 REQUIRED)
+find_package(Boost REQUIRED)
 message("Boost_INCLUDE_DIRS: ${Boost_INCLUDE_DIRS}")
 include_directories(${Boost_INCLUDE_DIRS})
 link_directories(${Boost_LIBRARY_DIRS})

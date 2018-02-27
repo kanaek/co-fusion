@@ -158,52 +158,52 @@ def installFromSource(path):
     os.chdir(path)
 
     # CUDA
-    if distro == 'trusty':
-        cmds = [
-            ('wget http://developer.download.nvidia.com/compute/cuda'
-                '/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1404_7.5'
-                '-18_amd64.deb'),
-            'sudo dpkg -i cuda-repo-ubuntu1404_7.5-18_amd64.deb',
-            'rm cuda-repo-ubuntu1404_7.5-18_amd64.deb',
-            'sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test',
-            'sudo add-apt-repository -y ppa:george-edison55/cmake-3.x',
-            'sudo add-apt-repository -y ppa:openjdk-r/ppa'
-        ]
-
-        executeCommands(cmds)
-
-        executeAptGetUpdate()
-        executeCommand('sudo apt-get install -y cuda-7-5')
-
-    elif distro == 'vivid':
-        cmds = [
-            ('wget http://developer.download.nvidia.com/compute/cuda'
-                '/repos/ubuntu1504/x86_64/cuda-repo-ubuntu1504_7.5'
-                '-18_amd64.deb'),
-            'sudo dpkg -i cuda-repo-ubuntu1504_7.5-18_amd64.deb',
-            'rm cuda-repo-ubuntu1504_7.5-18_amd64.deb'
-        ]
-
-        executeCommands(cmds)
-        executeAptGetUpdate()
-        executeCommand('sudo apt-get install -y cuda-7-5')
-
-    elif distro == 'xenial':
-        cmds = [
-            ('wget http://developer.download.nvidia.com/compute/cuda'
-                '/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_8.0.44'
-                '-1_amd64.deb'),
-            'sudo dpkg -i cuda-repo-ubuntu1604_8.0.44-1_amd64.deb',
-            'rm cuda-repo-ubuntu1604_8.0.44-1_amd64.deb'
-        ]
-
-        executeCommands(cmds)
-        executeAptGetUpdate()
-        executeCommand('sudo apt-get install -y cuda-8-0')
-
-    else:
-        print(distro, ' is not yet supported')
-        return
+    # if distro == 'trusty':
+    #     cmds = [
+    #         ('wget http://developer.download.nvidia.com/compute/cuda'
+    #             '/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1404_7.5'
+    #             '-18_amd64.deb'),
+    #         'sudo dpkg -i cuda-repo-ubuntu1404_7.5-18_amd64.deb',
+    #         'rm cuda-repo-ubuntu1404_7.5-18_amd64.deb',
+    #         'sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test',
+    #         'sudo add-apt-repository -y ppa:george-edison55/cmake-3.x',
+    #         'sudo add-apt-repository -y ppa:openjdk-r/ppa'
+    #     ]
+    #
+    #     executeCommands(cmds)
+    #
+    #     executeAptGetUpdate()
+    #     executeCommand('sudo apt-get install -y cuda-7-5')
+    #
+    # elif distro == 'vivid':
+    #     cmds = [
+    #         ('wget http://developer.download.nvidia.com/compute/cuda'
+    #             '/repos/ubuntu1504/x86_64/cuda-repo-ubuntu1504_7.5'
+    #             '-18_amd64.deb'),
+    #         'sudo dpkg -i cuda-repo-ubuntu1504_7.5-18_amd64.deb',
+    #         'rm cuda-repo-ubuntu1504_7.5-18_amd64.deb'
+    #     ]
+    #
+    #     executeCommands(cmds)
+    #     executeAptGetUpdate()
+    #     executeCommand('sudo apt-get install -y cuda-7-5')
+    #
+    # elif distro == 'xenial':
+    #     cmds = [
+    #         ('wget http://developer.download.nvidia.com/compute/cuda'
+    #             '/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_8.0.44'
+    #             '-1_amd64.deb'),
+    #         'sudo dpkg -i cuda-repo-ubuntu1604_8.0.44-1_amd64.deb',
+    #         'rm cuda-repo-ubuntu1604_8.0.44-1_amd64.deb'
+    #     ]
+    #
+    #     executeCommands(cmds)
+    #     executeAptGetUpdate()
+    #     executeCommand('sudo apt-get install -y cuda-8-0')
+    #
+    # else:
+    #     print(distro, ' is not yet supported')
+    #     return
 
     # Switching to alternative installations of g++ and java
     if distro == 'trusty':
@@ -212,8 +212,8 @@ def installFromSource(path):
                 '/usr/bin/gcc gcc '
                 '/usr/bin/gcc-4.9 60 '
                 '--slave /usr/bin/g++ g++ '
-                '/usr/bin/g++-4.9'),
-            'sudo update-java-alternatives -s java-1.8.0-openjdk-amd64'
+                '/usr/bin/g++-4.9')
+            # 'sudo update-java-alternatives -s java-1.8.0-openjdk-amd64'
         ]
 
         executeCommands(cmds)
@@ -584,10 +584,10 @@ def main(args):
 
 def executeAptGetUpdate():
     cmds = [
-        'sudo apt-get clean',
+        # 'sudo apt-get clean',
         'sudo rm -rf /var/cache/apt/*',
-        'sudo rm -rf /var/lib/apt/lists/*',
-        'sudo apt-get update'
+        'sudo rm -rf /var/lib/apt/lists/*'
+        # 'sudo apt-get update'
     ]
 
     executeCommands(

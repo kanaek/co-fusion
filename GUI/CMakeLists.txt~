@@ -11,7 +11,7 @@ find_package(ZLIB REQUIRED)
 find_package(CUDA REQUIRED)
 find_package(OpenNI2 REQUIRED)
 find_package(OpenCV 2.4 REQUIRED )
-find_package(Boost REQUIRED)
+find_package(Boost 1.58 REQUIRED)
 
 include_directories(${ZLIB_INCLUDE_DIR})
 include_directories(${EIGEN_INCLUDE_DIRS})
